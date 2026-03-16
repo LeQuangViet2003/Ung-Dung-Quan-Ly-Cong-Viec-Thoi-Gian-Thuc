@@ -4,7 +4,7 @@ import Board from './components/Board';
 import { LayoutDashboard, Bell, Settings, UserCircle, Search } from 'lucide-react';
 import './index.css';
 
-const SOCKET_SERVER_URL = 'http://localhost:3001';
+const SOCKET_SERVER_URL = import.meta.env.VITE_API_URL || '';
 
 function App() {
   const [socket, setSocket] = useState(null);

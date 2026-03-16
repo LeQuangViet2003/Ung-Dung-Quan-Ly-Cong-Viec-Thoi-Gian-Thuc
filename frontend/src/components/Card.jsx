@@ -13,7 +13,7 @@ export default function Card({ card, index, fetchBoard, socket }) {
   const handleSaveEdit = async (title, description) => {
     setIsEditing(false);
     if (!title) return;
-    const res = await fetch(`http://localhost:3001/api/cards/${card.id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/cards/${card.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, description }),
@@ -26,7 +26,7 @@ export default function Card({ card, index, fetchBoard, socket }) {
 
   const handleDeleteCard = async () => {
     if (!confirm('Bạn có chắc chắn muốn xóa thẻ này?')) return;
-    const res = await fetch(`http://localhost:3001/api/cards/${card.id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/cards/${card.id}`, {
       method: 'DELETE',
     });
     if (res.ok) {

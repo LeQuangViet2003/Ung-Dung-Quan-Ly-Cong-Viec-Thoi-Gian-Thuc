@@ -8,7 +8,7 @@ export default function Board({ socket }) {
 
   const fetchBoard = async () => {
     try {
-      const res = await fetch('http://localhost:3001/api/board');
+      const res = await fetch((import.meta.env.VITE_API_URL || '') + '/api/board');
       const data = await res.json();
       setColumns(data);
     } catch (err) {
@@ -75,7 +75,7 @@ export default function Board({ socket }) {
   const handleAddColumn = async () => {
     const title = prompt('Nhập tên danh sách mới:');
     if (!title) return;
-    const res = await fetch('http://localhost:3001/api/columns', {
+    const res = await fetch((import.meta.env.VITE_API_URL || '') + '/api/columns', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title }),

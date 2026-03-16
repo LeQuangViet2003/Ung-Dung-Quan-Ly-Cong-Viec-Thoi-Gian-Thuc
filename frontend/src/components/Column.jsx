@@ -9,7 +9,7 @@ export default function Column({ column, fetchBoard, socket }) {
   const handleAddCard = async () => {
     const title = prompt('Nhập tên thẻ công việc:');
     if (!title) return;
-    const res = await fetch('http://localhost:3001/api/cards', {
+    const res = await fetch((import.meta.env.VITE_API_URL || '') + '/api/cards', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, columnId: column.id, description: '' }),
@@ -24,7 +24,7 @@ export default function Column({ column, fetchBoard, socket }) {
     setShowMenu(false);
     const title = prompt('Nhập tên mới cho danh sách:', column.title);
     if (!title || title === column.title) return;
-    const res = await fetch(`http://localhost:3001/api/columns/${column.id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/columns/${column.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title }),
@@ -38,7 +38,7 @@ export default function Column({ column, fetchBoard, socket }) {
   const handleDeleteColumn = async () => {
     setShowMenu(false);
     if (!confirm('Bạn có chắc chắn muốn xóa danh sách này cùng mọi thẻ bên trong?')) return;
-    const res = await fetch(`http://localhost:3001/api/columns/${column.id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL || ''}/api/columns/${column.id}`, {
       method: 'DELETE',
     });
     if (res.ok) {

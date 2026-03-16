@@ -1,0 +1,12 @@
+{
+    "name": "Quản lý Công việc Thời gian thực",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+    "forwardPorts": [5000],
+    "postCreateCommand": "npm run setup && npm run build && npm run seed",
+    "postStartCommand": "npm start",
+    "customizations": {
+        "vscode": {
+            "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+        }
+    }
+}

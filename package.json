@@ -1,0 +1,15 @@
+{
+  "name": "task-manager-realtime",
+  "version": "1.0.0",
+  "description": "Ứng dụng Quản lý Công việc Thời gian thực",
+  "scripts": {
+    "setup": "cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "seed": "cd backend && npx prisma db push",
+    "start": "cd backend && npm start",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
